@@ -118,7 +118,7 @@ function App() {
             <p>{t("hero_text")}</p>
           </div>
           <div className="hero__image">
-            <img src="/imgs/1758413403911.jpg" alt="Hero Image" />
+            <img src="imgs/1758413403911.jpg" alt="Hero Image" />
           </div>
         </section>
 
@@ -139,7 +139,7 @@ function App() {
 
           <div className="spots__item">
             <div className="spots__image">
-              <img src="/imgs/1758413403792.jpg" alt="Spot 1" />
+              <img src="imgs/1758413403792.jpg" alt="Spot 1" />
             </div>
             <div className="spots__text">
               <h3 className="spots__subtitle">{t("hiruzen_cycling")}</h3>
@@ -151,7 +151,7 @@ function App() {
 
           <div className="spots__item">
             <div className="spots__image">
-              <img src="/imgs/1758413404027.jpg" alt="Spot 2" />
+              <img src="imgs/1758413404027.jpg" alt="Spot 2" />
             </div>
             <div className="spots__text">
               <h3 className="spots__subtitle">{t("canoe_ecotour")}</h3>
@@ -165,7 +165,7 @@ function App() {
             <button className="slider__btn slider__btn--prev">‹</button>
             <div className="slider__list">
               <div className="slider__item">
-                <img className="slider__item__img" src="/imgs/1758413403665.jpg" alt="観光地1" />
+                <img className="slider__item__img" src="imgs/1758413403665.jpg" alt="観光地1" />
                 <h3>{t("traditional_lodging")}</h3>
                 <p>{t("traditional_lodging_description")}</p>
               </div>
@@ -175,7 +175,7 @@ function App() {
                 <p>{t("traditional_lodging_description")}</p>
               </div>
               <div className="slider__item">
-                <img className="slider__item__img" src="/imgs/1758413403792.jpg" alt="観光地3" />
+                <img className="slider__item__img" src="imgs/1758413403792.jpg" alt="観光地3" />
                 <h3>{t("traditional_lodging")}</h3>
                 <p>{t("traditional_lodging_description")}</p>
               </div>
@@ -191,13 +191,13 @@ function App() {
             <a href="https://www.unicef.or.jp/kodomo/sdgs/17goals/" target="_blank" className="sdgs__btn">{t("read_more")} <ArrowIcon /></a>
           </div>
           <div className="sdgs__image">
-            <img src="/imgs/1758413404027.jpg" alt="SDGs Image" />
+            <img src="imgs/1758413404027.jpg" alt="SDGs Image" />
           </div>
         </section>
 
         <section className="reservation">
           <div className="reservation__image">
-            <img src="/imgs/1758413403854.jpg" alt="Reservation" />
+            <img src="imgs/1758413403854.jpg" alt="Reservation" />
           </div>
           <div className="reservation__content">
             <p className="reservation__text">{t("reservation_text")}</p>
