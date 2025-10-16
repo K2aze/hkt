@@ -1,7 +1,14 @@
+import { useTranslation } from "react-i18next"
 import ArrowIcon from "./assets/ArrowIcon"
-import "./style.scss"
+import { useState } from "react"
 
 function App() {
+  const { t, i18n } = useTranslation()
+  const [showLangDropdown, setShowLangDropdown] = useState(false)
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+  }
 
   const scrollTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -35,7 +42,7 @@ function App() {
                 href="#"
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollTop(e)}
               >
-                トップ
+                {t("top")}
               </a>
             </li>
             <li className="nav__item">
@@ -45,7 +52,7 @@ function App() {
                   scrollToSection(e, "about")
                 }
               >
-                エコツーリズム
+                {t("ecotourism")}
               </a>
             </li>
             <li className="nav__item">
@@ -55,22 +62,60 @@ function App() {
                   scrollToSection(e, "spots")
                 }
               >
-                観光名所
+                {t("tourist_spots")}
               </a>
             </li>
-            <li className="nav__item"><a href="#">SDGs</a></li>
+            <li className="nav__item"><a href="https://www.unicef.or.jp/kodomo/sdgs/17goals/" target="_blank">{t("sdgs")}</a></li>
           </ul>
         </nav>
-        <button className="header__menu-btn">
-          ☰
-          <span>langugage</span>
-        </button>
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <button
+            className="header__menu-btn"
+            onClick={() => setShowLangDropdown((prev) => !prev)}
+          >
+            ☰
+            <span>{t("language")}</span>
+          </button>
+          {showLangDropdown && (
+            <div
+              style={{
+                position: "absolute",
+                top: "100%",
+                right: 0,
+                background: "#fff",
+                border: "1px solid #ccc",
+                zIndex: 1000,
+                minWidth: "120px",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+              }}
+            >
+              <button
+                style={{ width: "100%", padding: "8px", textAlign: "left", background: "none", border: "none" }}
+                onClick={() => { changeLanguage("en"); setShowLangDropdown(false); }}
+              >
+                English
+              </button>
+              <button
+                style={{ width: "100%", padding: "8px", textAlign: "left", background: "none", border: "none" }}
+                onClick={() => { changeLanguage("ja"); setShowLangDropdown(false); }}
+              >
+                日本語
+              </button>
+              <button
+                style={{ width: "100%", padding: "8px", textAlign: "left", background: "none", border: "none" }}
+                onClick={() => { changeLanguage("vi"); setShowLangDropdown(false); }}
+              >
+                Tiếng Việt
+              </button>
+            </div>
+          )}
+        </div>
       </header>
 
       <main className="main">
         <section className="hero">
           <div className="hero__text">
-            <p>旅することが、<br />未来をつくる。</p>
+            <p>{t("hero_text")}</p>
           </div>
           <div className="hero__image">
             <img src="/imgs/1758413403911.jpg" alt="Hero Image" />
@@ -79,13 +124,13 @@ function App() {
 
         <section className="about" id="about">
           <div className="about__quest">
-            <h2 className="about__quest__title">エコツーリズムとは</h2>
+            <h2 className="about__quest__title">{t("what_is_ecotourism")}</h2>
             <span className="about__quest__pt">?</span>
           </div>
           <div className="about__content">
-            <h2 className="about__content__title">自然環境や文化を大切にしながらそこに住む人たちとつながる旅</h2>
+            <h2 className="about__content__title">{t("ecotourism_description_title")}</h2>
             <p className="about__content__desc">
-              自然や地域文化を守りながら楽しむ、持続可能な観光のスタイルです。
+              {t("ecotourism_description")}
             </p>
           </div>
         </section>
@@ -97,9 +142,9 @@ function App() {
               <img src="/imgs/1758413403792.jpg" alt="Spot 1" />
             </div>
             <div className="spots__text">
-              <h3 className="spots__subtitle">蒜山高原サイクリング</h3>
+              <h3 className="spots__subtitle">{t("hiruzen_cycling")}</h3>
               <p className="spots__desc">
-                蒜山高原界では6月から晩秋に至る長期間にわたり30km圏の自転車道が整備されています。 豊かな自然を感受できる白樺並木を通り、 サイクリング、ウォーキング、ジョッギング、乗馬などのリクリエーションを楽しめます。 自転車は高原の施設店舗をお得に利用される料金でレンタルできます。 女子旅やファミリー、ハニーケーション、一人旅どんなスタイルでも満足してサイクリングを楽しいです。
+                {t("hiruzen_cycling_description")}
               </p>
             </div>
           </div>
@@ -109,9 +154,9 @@ function App() {
               <img src="/imgs/1758413404027.jpg" alt="Spot 2" />
             </div>
             <div className="spots__text">
-              <h3 className="spots__subtitle">カヌーエコツアー</h3>
+              <h3 className="spots__subtitle">{t("canoe_ecotour")}</h3>
               <p className="spots__desc">
-                JR岡山駅から110分という好アクセス。「自然志 向通り、カヌー講座追求を得て」「自然100選」に認定 感じる紅葉のコントラスト、青と白さを風景をまる 水面にしぶる秋晴れ・エコツアー。平日昼営業の キャンプイン構想・ライフワークを図りそして自由、 気。秋の夜で新鮮い晴れをヨウベウでい新鮮い 気。カヌーで秋高いかを気分清流な方ながら素で 受けられいこでい。平静時の計画と上体協調整備 整理でかカヌー・エコツアー の総配がお好ます！
+                {t("canoe_ecotour_description")}
               </p>
             </div>
           </div>
@@ -121,18 +166,18 @@ function App() {
             <div className="slider__list">
               <div className="slider__item">
                 <img className="slider__item__img" src="/imgs/1758413403665.jpg" alt="観光地1" />
-                <h3>古民家宿泊施設</h3>
-                <p>伝統的な建築と現代的な快適さを融合した宿泊施設での体験</p>
+                <h3>{t("traditional_lodging")}</h3>
+                <p>{t("traditional_lodging_description")}</p>
               </div>
               <div className="slider__item">
                 <img className="slider__item__img" src="imgs/1758413403561.jpg" alt="観光地2" />
-                <h3>古民家宿泊施設</h3>
-                <p>伝統的な建築と現代的な快適さを融合した宿泊施設での体験</p>
+                <h3>{t("traditional_lodging")}</h3>
+                <p>{t("traditional_lodging_description")}</p>
               </div>
               <div className="slider__item">
                 <img className="slider__item__img" src="/imgs/1758413403792.jpg" alt="観光地3" />
-                <h3>古民家宿泊施設</h3>
-                <p>伝統的な建築と現代的な快適さを融合した宿泊施設での体験</p>
+                <h3>{t("traditional_lodging")}</h3>
+                <p>{t("traditional_lodging_description")}</p>
               </div>
             </div>
             <button className="slider__btn slider__btn--next">›</button>
@@ -141,9 +186,9 @@ function App() {
 
         <section className="sdgs">
           <div className="sdgs__content">
-            <h2 className="sdgs__title">SDGsの取り組み</h2>
-            <p className="sdgs__desc">持続可能な開発目標（Sustainable Development Goals）</p>
-            <a href="#" className="sdgs__btn">続きを読む <ArrowIcon /></a>
+            <h2 className="sdgs__title">{t("sdgs_initiatives")}</h2>
+            <p className="sdgs__desc">{t("sdgs_full_form")}</p>
+            <a href="https://www.unicef.or.jp/kodomo/sdgs/17goals/" target="_blank" className="sdgs__btn">{t("read_more")} <ArrowIcon /></a>
           </div>
           <div className="sdgs__image">
             <img src="/imgs/1758413404027.jpg" alt="SDGs Image" />
@@ -155,14 +200,14 @@ function App() {
             <img src="/imgs/1758413403854.jpg" alt="Reservation" />
           </div>
           <div className="reservation__content">
-            <p className="reservation__text">自然体験型エコツーリズムのご予約はこちらから</p>
-            <a href="https://www.hekisuien.jp/" target="_blank" rel="noopener" className="reservation__btn">ご予約はこちら <ArrowIcon /></a>
+            <p className="reservation__text">{t("reservation_text")}</p>
+            <a href="https://www.hekisuien.jp/" target="_blank" rel="noopener" className="reservation__btn">{t("book_now")} <ArrowIcon /></a>
           </div>
         </section>
-      </main >
+      </main>
 
       <footer className="footer">
-        <p className="footer__catch">旅することが、未来をつくる。</p>
+        <p className="footer__catch">{t("hero_text")}</p>
         <nav className="footer__nav">
           <ul className="footer__list">
             <li className="footer__item">
@@ -170,7 +215,7 @@ function App() {
                 href="#"
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollTop(e)}
               >
-                トップ
+                {t("top")}
               </a>
             </li>
             <li className="footer__item">
@@ -180,7 +225,7 @@ function App() {
                   scrollToSection(e, "about")
                 }
               >
-                エコツーリズム
+                {t("ecotourism")}
               </a>
             </li>
             <li className="footer__item">
@@ -190,10 +235,10 @@ function App() {
                   scrollToSection(e, "spots")
                 }
               >
-                観光名所
+                {t("tourist_spots")}
               </a>
             </li>
-            <li className="footer__item"><a href="#">SDGsの取り組み</a></li>
+            <li className="footer__item"><a href="https://www.unicef.or.jp/kodomo/sdgs/17goals/" target="_blank">{t("sdgs_initiatives")}</a></li>
           </ul>
         </nav>
 
