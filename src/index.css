@@ -27,7 +27,7 @@ body {
   border: none;
   background: none;
   color: inherit;
-  font-size: 1rem;
+  font-size: 1.7rem;
 }
 .nav__list {
   list-style-type: none;
@@ -35,9 +35,14 @@ body {
   flex-flow: column nowrap;
   gap: 1rem;
 }
-.nav__item > a {
-  color: inherit;
-  text-decoration: none;
+.nav__item a {
+  display: inline-block;   /* パディングを効かせるため */
+  font-size: 1.4rem;       /* ← 文字を大きくする */
+  font-weight: 600;        /* ← 少し太くする（見やすく） */
+  padding: 12px 24px;      /* ← 上下左右の余白を広げてクリック範囲も拡大 */
+  color: inherit;           /* ← テキストカラー */
+  text-decoration: none;   /* ← 下線を消す（必要なら） */
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 .nav__item {
   padding: 0.5rem 1rem;
@@ -51,8 +56,14 @@ body {
   background-size: 100vw 150vh;
   background-repeat: no-repeat;
 }
+.main {
+  background-image: url("/imgs/subtract.png");
+  background-size: 100% auto; /* ← 修正！ */
+  background-repeat: no-repeat;
+  background-position: top center; /* ← 明示しておくと安定 */
+}
+
 .hero {
-  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,7 +86,7 @@ body {
   padding-left: 15vw;
   position: relative;
   z-index: 10;
-  width: 20ch;
+  width: 18ch;
 }
 .about {
   padding: 5rem 20vw;
@@ -84,6 +95,7 @@ body {
   place-items: center;
   color: #fff;
 }
+
 .about__quest {
   position: relative;
 }
@@ -100,6 +112,7 @@ body {
   z-index: 2;
   color: #13621a;
 }
+
 .about__content__title {
   font-size: 1.5rem;
 }
@@ -134,14 +147,22 @@ body {
 }
 .spots__slider {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-block-start: 5rem;
+}
+.spots__subtitle {
+  font-size: 1.7rem; /* 見出しを少し大きく */
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+.spots__desc {
+  font-size: 1.3rem; /* 説明文を標準サイズに */
 }
 .slider__list {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 .slider__item {
   width: calc((100vw - 26rem) / 3);
@@ -256,6 +277,7 @@ body {
   font-family: "Noto Serif JP", serif;
   font-size: 3rem;
   color: #fff;
+  padding-top: 90px;
 }
 .footer__list {
   display: grid;

@@ -1,36 +1,33 @@
-import { useTranslation } from "react-i18next"
-import ArrowIcon from "./assets/ArrowIcon"
-import { useState } from "react"
+import { useTranslation } from "react-i18next";
+import ArrowIcon from "./assets/ArrowIcon";
+import { useState } from "react";
 
 function App() {
-  const { t, i18n } = useTranslation()
-  const [showLangDropdown, setShowLangDropdown] = useState(false)
+  const { t, i18n } = useTranslation();
+  const [showLangDropdown, setShowLangDropdown] = useState(false);
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
-  }
+    i18n.changeLanguage(lng);
+  };
 
   const scrollTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     document.documentElement.scrollTo({
       top: 0,
-      behavior: "smooth"
-    })
-  }
+      behavior: "smooth",
+    });
+  };
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string
+    targetId: string,
   ) => {
-    e.preventDefault()
-    const target = document.getElementById(targetId)
+    e.preventDefault();
+    const target = document.getElementById(targetId);
     if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" })
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }
-
-
-
+  };
 
   return (
     <>
@@ -40,7 +37,9 @@ function App() {
             <li className="nav__item">
               <a
                 href="#"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollTop(e)}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                  scrollTop(e)
+                }
               >
                 {t("top")}
               </a>
@@ -65,7 +64,14 @@ function App() {
                 {t("tourist_spots")}
               </a>
             </li>
-            <li className="nav__item"><a href="https://www.unicef.or.jp/kodomo/sdgs/17goals/" target="_blank">{t("sdgs")}</a></li>
+            <li className="nav__item">
+              <a
+                href="https://www.unicef.or.jp/kodomo/sdgs/17goals/"
+                target="_blank"
+              >
+                {t("sdgs")}
+              </a>
+            </li>
           </ul>
         </nav>
         <div style={{ position: "relative", display: "inline-block" }}>
@@ -73,8 +79,7 @@ function App() {
             className="header__menu-btn"
             onClick={() => setShowLangDropdown((prev) => !prev)}
           >
-            ☰
-            <span>{t("language")}</span>
+            ☰<span>{t("language")}</span>
           </button>
           {showLangDropdown && (
             <div
@@ -90,20 +95,47 @@ function App() {
               }}
             >
               <button
-                style={{ width: "100%", padding: "8px", textAlign: "left", background: "none", border: "none" }}
-                onClick={() => { changeLanguage("en"); setShowLangDropdown(false); }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  textAlign: "left",
+                  background: "none",
+                  border: "none",
+                }}
+                onClick={() => {
+                  changeLanguage("en");
+                  setShowLangDropdown(false);
+                }}
               >
                 English
               </button>
               <button
-                style={{ width: "100%", padding: "8px", textAlign: "left", background: "none", border: "none" }}
-                onClick={() => { changeLanguage("ja"); setShowLangDropdown(false); }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  textAlign: "left",
+                  background: "none",
+                  border: "none",
+                }}
+                onClick={() => {
+                  changeLanguage("ja");
+                  setShowLangDropdown(false);
+                }}
               >
                 日本語
               </button>
               <button
-                style={{ width: "100%", padding: "8px", textAlign: "left", background: "none", border: "none" }}
-                onClick={() => { changeLanguage("vi"); setShowLangDropdown(false); }}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  textAlign: "left",
+                  background: "none",
+                  border: "none",
+                }}
+                onClick={() => {
+                  changeLanguage("vi");
+                  setShowLangDropdown(false);
+                }}
               >
                 Tiếng Việt
               </button>
@@ -118,7 +150,7 @@ function App() {
             <p>{t("hero_text")}</p>
           </div>
           <div className="hero__image">
-            <img src="/imgs/1758413403911.jpg" alt="Hero Image" />
+            <img src="imgs/1758413403911.jpg" alt="Hero Image" />
           </div>
         </section>
 
@@ -128,7 +160,9 @@ function App() {
             <span className="about__quest__pt">?</span>
           </div>
           <div className="about__content">
-            <h2 className="about__content__title">{t("ecotourism_description_title")}</h2>
+            <h2 className="about__content__title">
+              {t("ecotourism_description_title")}
+            </h2>
             <p className="about__content__desc">
               {t("ecotourism_description")}
             </p>
@@ -136,51 +170,63 @@ function App() {
         </section>
 
         <section className="spots" id="spots">
-
           <div className="spots__item">
+            <h2>{t("panel_title")}</h2>
+            <div></div>
             <div className="spots__image">
-              <img src="/imgs/1758413403792.jpg" alt="Spot 1" />
+              <img src="imgs/1758413403792.jpg" alt="Spot 1" />
             </div>
             <div className="spots__text">
               <h3 className="spots__subtitle">{t("hiruzen_cycling")}</h3>
-              <p className="spots__desc">
-                {t("hiruzen_cycling_description")}
-              </p>
+              <p className="spots__desc">{t("hiruzen_cycling_description")}</p>
             </div>
           </div>
 
           <div className="spots__item">
             <div className="spots__image">
-              <img src="/imgs/1758413404027.jpg" alt="Spot 2" />
+              <img src="imgs/1758413404027.jpg" alt="Spot 2" />
             </div>
             <div className="spots__text">
               <h3 className="spots__subtitle">{t("canoe_ecotour")}</h3>
-              <p className="spots__desc">
-                {t("canoe_ecotour_description")}
-              </p>
+              <p className="spots__desc">{t("canoe_ecotour_description")}</p>
             </div>
           </div>
 
           <div className="spots__slider">
-            <button className="slider__btn slider__btn--prev">‹</button>
             <div className="slider__list">
+              <a
+                href="https://eco-tourism-hkt.vercel.app/"
+                target="_blank"
+                className="slider__item"
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                <img
+                  className="slider__item__img"
+                  src="imgs/1758413403665.jpg"
+                  alt="観光地1"
+                />
+                <h3>{t("kurashiki_panel_title")}</h3>
+                <p>{t("kurashiki_panel_title_description")}</p>
+              </a>
               <div className="slider__item">
-                <img className="slider__item__img" src="/imgs/1758413403665.jpg" alt="観光地1" />
-                <h3>{t("traditional_lodging")}</h3>
-                <p>{t("traditional_lodging_description")}</p>
+                <img
+                  className="slider__item__img"
+                  src="imgs/1758413403322.jpg"
+                  alt="観光地2"
+                />
+                <h3>{t("korakuen_panel_title")}</h3>
+                <p>{t("korakuen_panel_title_description")}</p>
               </div>
               <div className="slider__item">
-                <img className="slider__item__img" src="imgs/1758413403561.jpg" alt="観光地2" />
-                <h3>{t("traditional_lodging")}</h3>
-                <p>{t("traditional_lodging_description")}</p>
-              </div>
-              <div className="slider__item">
-                <img className="slider__item__img" src="/imgs/1758413403792.jpg" alt="観光地3" />
-                <h3>{t("traditional_lodging")}</h3>
-                <p>{t("traditional_lodging_description")}</p>
+                <img
+                  className="slider__item__img"
+                  src="imgs/1758413403971.jpg"
+                  alt="観光地3"
+                />
+                <h3>{t("ushimado_panel_title")}</h3>
+                <p>{t("ushimado_panel_title_description")}</p>
               </div>
             </div>
-            <button className="slider__btn slider__btn--next">›</button>
           </div>
         </section>
 
@@ -188,20 +234,33 @@ function App() {
           <div className="sdgs__content">
             <h2 className="sdgs__title">{t("sdgs_initiatives")}</h2>
             <p className="sdgs__desc">{t("sdgs_full_form")}</p>
-            <a href="https://www.unicef.or.jp/kodomo/sdgs/17goals/" target="_blank" className="sdgs__btn">{t("read_more")} <ArrowIcon /></a>
+            <a
+              href="https://www.unicef.or.jp/kodomo/sdgs/17goals/"
+              target="_blank"
+              className="sdgs__btn"
+            >
+              {t("read_more")} <ArrowIcon />
+            </a>
           </div>
           <div className="sdgs__image">
-            <img src="/imgs/1758413404027.jpg" alt="SDGs Image" />
+            <img src="imgs/1758413404027.jpg" alt="SDGs Image" />
           </div>
         </section>
 
         <section className="reservation">
           <div className="reservation__image">
-            <img src="/imgs/1758413403854.jpg" alt="Reservation" />
+            <img src="imgs/1758413404027.jpg" alt="Reservation" />
           </div>
           <div className="reservation__content">
             <p className="reservation__text">{t("reservation_text")}</p>
-            <a href="https://www.hekisuien.jp/" target="_blank" rel="noopener" className="reservation__btn">{t("book_now")} <ArrowIcon /></a>
+            <a
+              href="https://www.hekisuien.jp/"
+              target="_blank"
+              rel="noopener"
+              className="reservation__btn"
+            >
+              {t("book_now")} <ArrowIcon />
+            </a>
           </div>
         </section>
       </main>
@@ -213,7 +272,9 @@ function App() {
             <li className="footer__item">
               <a
                 href="#"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollTop(e)}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                  scrollTop(e)
+                }
               >
                 {t("top")}
               </a>
@@ -238,7 +299,14 @@ function App() {
                 {t("tourist_spots")}
               </a>
             </li>
-            <li className="footer__item"><a href="https://www.unicef.or.jp/kodomo/sdgs/17goals/" target="_blank">{t("sdgs_initiatives")}</a></li>
+            <li className="footer__item">
+              <a
+                href="https://www.unicef.or.jp/kodomo/sdgs/17goals/"
+                target="_blank"
+              >
+                {t("sdgs_initiatives")}
+              </a>
+            </li>
           </ul>
         </nav>
 
@@ -253,7 +321,7 @@ function App() {
         </a>
       </footer>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
